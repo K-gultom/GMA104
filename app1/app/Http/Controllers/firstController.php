@@ -32,4 +32,43 @@ class firstController extends Controller
         echo $hasil;
         echo $hasil2;
     }
+    
+    public function first(){
+        
+        return view('firstScreen');
+    }
+
+    public function info(){
+        
+        // Kita Akan kenalan Materi Baru (Variabel dan Tipe Data)
+
+        $string = "Nama saya Kiel";
+
+        $char = 'A';
+
+        $number1 = 100;
+        $number2 = 100;
+
+        $jumlah = $number1 + $number2;
+
+        $desimal = 1.5;
+        
+        $campur = $number1 + $desimal;
+
+        $bool1 = true;
+        $bool2 = false;
+
+        // Ini memanggil variabel menggunakan echo
+
+        // echo $string . "<br>";
+        // echo $char . "<br>";
+
+        echo $jumlah . "<br>";
+        
+        echo $campur . "<br>";
+
+        // echo $bool1 . "<br>";
+        // echo $bool2 . "<br>";
+
+    }
 }

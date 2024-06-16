@@ -1,0 +1,29 @@
+Pertemuan 4
+
+php artisan make:controller secondController
+
+Hitung Usia 
+ klasifikasi Usia 
+{	
+	Balita 0 - 5
+	Anak 6 - 12
+	Remaja 13 - 25
+	Dewasa 26 - 45
+	Paruhbaya 46 - 65
+	Lansia 66 - dst 
+}
+
+
+**Array  -> Larik
+array selalu dimulai dari angka 0
+
+10 (0,1,2,3,4,5,6,7,8,9)
+panjang array -1
+
+22 (21)
+
+**Perulangan
+ for();
+ foreach($variable as $item);
+
+HTML & Bootstrap (Next Pertemuan)

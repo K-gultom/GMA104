@@ -1,0 +1,38 @@
+Routing 
+
+url?  
+putri.com/data-diri
+
+Url <-> Controller
+
+controller untk mengontrol jalur url.
+
+*membuat controller
+   php artisan make:controller nama_controller
+
+Seluruh kebutuhan URL ada di folder routes/web.php
+
+
+Ekstensi untuk view(Wajib)
+nama_file.blade.php
+
+
+========================================
+Variabel ?
+  Variable untuk menampung
+Tipe Data ?
+- String   -> kata (nasi goreng)
+- Char     -> karakter (A)
+- number   -> bilangan bulat 1.2.3....
+- float    -> desimal  1,2.1.3,.....
+- boolean  -> True 1/False 0
+
+
+=====================================
+Shortcut hari ini 
+ctrl+/ untuk komentar
+ctrl+shift+` untuk membuka terminal
+
+
+
+

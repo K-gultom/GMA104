@@ -1,0 +1,40 @@
+Pertemuan 5
+Laravel Blade (Tampilan)
+{{ }}
+
+compact('')
+
+$nama = 'kiel';
+
+return view('firstScreen', compact('nama');
+
+{{$nama}}
+
+**Passing Data
+Controller -> blade (compact) v
+Blade -> controller (Request)
+
+**Bootstrap
+Framework -> tampilan
+
+tag selector
+Class  .
+Id #
+
+**Migration(field) -> Data
+migration <-> Model
+
+todo_list = {
+ id
+ nama_kegiatan
+ hari/tanggal
+ tempat
+}
+
+id   nama_kegiatan      hari/tanggal       tempat
+1    bangun tidur       besok, 14/6/2024   pantai kapuk
+2    rapat              minggu, 16/6/2024  Palcomtech
+  
+record()
+
+

@@ -57,10 +57,31 @@ class secondController extends Controller
         
          //Operator Perbandingan
          /**
+          * Sama dengan (==)
           * And (&&)
           * Or (||)
           * Not Or (!=) 
           */
+
+          echo "<br>";
+          echo "==============Perulangan============== <br>";
+
+          for ($i=0; $i < 10; $i++) { 
+
+            echo "ini Perulangan Ke - " . $i . "<br>";
+          }
+
+          $buah = ['Apel', 'Jeruk', 'Pisang'];
+
+          foreach ($buah as $item) {
+                echo "Buah " . $item . "<br>";
+          }
+
+
+          for ($i=0; $i < count($buah); $i++) { 
+
+            echo "ini Perulangan Ke - " . $i . "  " . $buah[$i] . "<br>";
+          }
         
     }
 }

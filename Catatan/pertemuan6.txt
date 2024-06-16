@@ -1,0 +1,31 @@
+pertemuan 6
+
+Kamis minggu dpan, (Tugas1)
+
+1 row maksimal 12 col
+
+**Todo list
+
+blade{
+ @yield('') -> penanda part
+ @extends('') -> mengambil induk dari....
+ @section('') -> part
+}
+
+masuk direktori  cd
+kalau keluar direktori cd..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

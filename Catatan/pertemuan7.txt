@@ -1,0 +1,50 @@
+Pertemuan 7
+
+*Add function
+ passing Data 
+View -> Controller (Request)
+
+@csrf (Cross-site request forgery)
+
+Controller -> blade (Compact)
+
+Blade->controller (Request)->name
+
+nama kegiatan
+tempat
+waktu tanggal
+
+besok -> buat proses simpan data secara dinamis
+tampilkan didalam blade
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

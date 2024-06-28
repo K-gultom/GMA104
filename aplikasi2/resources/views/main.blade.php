@@ -68,7 +68,7 @@
 
 <body>
 <div class="d-flex">
-    <div class="clr max-height-vh-100 min-vh-100 col-2">
+    <div class="clr max-height-vh-100 min-vh-100" style="padding-right: 100px">
         <nav class="nav flex-column">
             <div class="container mt-3">
                 <a class="head navbar-brand mt-3" href="#">

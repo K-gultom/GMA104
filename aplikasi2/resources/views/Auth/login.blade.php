@@ -37,20 +37,31 @@
               </div>
               <h4>Hello! let's get started</h4>
               <h6 class="fw-light">Sign in to continue.</h6>
-              <form class="pt-3">
+              <form class="pt-3" method="POST">
+                @csrf
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
+                  <input type="email" value="{{old('email')}}" name="email" class="form-control form-control-lg @error('email') is-invalid @enderror" placeholder="Username">
+                  @error('email')
+                      <div class="invalid-feedback">
+                          {{$message}}
+                      </div>
+                  @endif
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                  <input type="password" name="password" class="form-control form-control-lg @error('password') is-invalid @enderror" placeholder="Password">
+                  @error('password')
+                      <div class="invalid-feedback">
+                          {{$message}}
+                      </div>
+                  @endif
                 </div>
                 <div class="mt-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="#">SIGN IN</a>
+                  <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
                 </div>
                 
-                <div class="text-center mt-4 fw-light">
+                {{-- <div class="text-center mt-4 fw-light">
                   Don't have an account? <a href="#" class="text-primary">Create</a>
-                </div>
+                </div> --}}
               </form>
             </div>
           </div>

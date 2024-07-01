@@ -19,8 +19,9 @@
         body {
             position: relative;
         }
-        a:hover {
+        .side:hover {
             background-color: #001C45;
+            padding-block: false;
         }
         .navbar {
             background-color: #1B54A9;
@@ -63,37 +64,49 @@
             color: #fff;
             background-color: #001C45;
         }
+        .nav-link.active {
+            background-color: #001C45; /* Adjust to your desired active background color */
+            color: white !important; /* Ensure the text color is visible */
+        }
+
     </style>
 </head>
 
 <body>
 <div class="d-flex">
-    <div class="clr max-height-vh-100 min-vh-100" style="padding-right: 100px">
+    <div class="clr max-height-vh-100 min-vh-100" >
         <nav class="nav flex-column">
-            <div class="container mt-3">
+            <div class="container mt-3" style="padding-right: 50px">
                 <a class="head navbar-brand mt-3" href="#">
                     <img src="{{ url('/assets/images/laravel.png') }}" height="60">
                     GMA104A
                 </a>
                 <h3 class="head m-3"></h3>
             </div>
-          
-            <a href="{{ url('/') }}" class="side nav-item nav-link active text-light"><i class="bi bi-house-fill"></i> Dashboard</a>
             
-            <div class="nav-item dropdown">
-              <a class="side nav-link active text-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-people-fill"></i> Data Apalahh
-              </a>
-              <div class="dropdown-menu mx-3">
-                <a href="{{ url('/') }}" class="dropdown-item dropHover">Data 1</a>
-                <a href="{{ url('/') }}" class="dropdown-item dropHover">Data 2</a>
-                <a href="{{ url('/') }}" class="dropdown-item dropHover">Data 3</a>
-              </div>
-            </div>
-            
-            <a href="{{ url('/') }}" class="side nav-item nav-link active text-light"><i class="fa-solid fa-power-off"></i> Logout</a>
-          
-        </nav>
+            <!-- Menu Side Bar -->
+            <a href="{{ url('/dashboard') }}" class="px-4 side nav-item nav-link {{ Request::is('dashboard') ? 'active' : '' }} text-light">
+                <i class="bi bi-house-fill"></i> Dashboard
+            </a>
+
+            <div class="px-2 pt-3 text-decoration-none text-light"><strong>Data Toko</strong></div>
+                <a href="{{ url('/data-a') }}" class="px-4 side nav-item nav-link {{ Request::is('data-a') ? 'active' : '' }} text-light">
+                    <i class="bi bi-house-fill"></i> Data A
+                </a>
+                <a href="{{ url('/data-b') }}" class="px-4 side nav-item nav-link {{ Request::is('data-b') ? 'active' : '' }} text-light">
+                    <i class="bi bi-house-fill"></i> Data B
+                </a>
+              
+        
+            <div class="px-2 pt-3 text-decoration-none text-light"><strong>Super Admin</strong></div>
+                <a href="{{ url('/pegawai') }}" class="px-4 side nav-item nav-link {{ Request::is('pegawai') ? 'active' : '' }} text-light">
+                    <i class="fa-solid fa-key"></i> Pegawai
+                </a>
+                
+            <a href="{{ url('/logout') }}" class="px-4 side nav-item nav-link text-light mt-4">
+                <i class="fa-solid fa-power-off"></i> Logout
+            </a>
+        </nav>            
     </div>
 
     <div class="col">
@@ -101,9 +114,9 @@
             <div class="container-fluid">
                 <div class="d-flex align-items-center">
                     <button id="toggleMenuBtn" class="btn btn-light me-2"><i class="fas fa-bars"></i></button>
-                    <a class="navbar-brand" href="#">
-                        Hai Guyssss......
-                        {{-- {{Auth()->user()->name}} --}}
+
+                    <a class="navbar-brand" href="">
+                        Hai {{Auth()->User()->email}}
                     </a>  
                 </div>
                 {{-- <a href="{{url('/')}}" class="text-light" style="text-decoration: none;">
@@ -118,7 +131,7 @@
         </div> 
 
         <footer class="text-center p-3">
-            &copy; 2024 GMA104A - Aplikasi Stok Barang Apps All rights reserved.
+            &copy; 2024 GMA104A - Apps Stok Barang All rights reserved.
         </footer>
     </div>
 </div>

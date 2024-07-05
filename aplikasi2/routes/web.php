@@ -3,6 +3,7 @@
 use App\Http\Controllers\authController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\pegawaiController;
+use App\Http\Controllers\stokController;
 use App\Http\Controllers\suplierController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,8 +49,8 @@ Route::middleware(['auth:','cekLevel:superadmin,admin'])->group(function () {
 
 
     /**
-     * Routing Menu Barang dan sub Barang
+     * Routing Menu Stok
      */
-    
+        Route::get('/stok', [stokController::class, 'index']);
 
 });

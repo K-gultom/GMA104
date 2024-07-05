@@ -3,6 +3,7 @@
 use App\Http\Controllers\authController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\pegawaiController;
+use App\Http\Controllers\suplierController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:','ceklevel:superadmin,admin'])->group(function () {});
@@ -28,5 +29,21 @@ Route::middleware(['auth:','cekLevel:superadmin,admin'])->group(function () {
 
     
     Route::get('/data-a', [dashboardController::class, 'DataA']);
+
+
+
+    /**
+     * Ini Baris Data Routing Suplier
+     * 
+     */
+    Route::get('/suplier', [suplierController::class, 'index']);
+
+    Route::get('/suplier/add', [suplierController::class, 'add']);
+    Route::post('/suplier/add', [suplierController::class, 'add_Proses']);
+
+    Route::get('/suplier/edit/{id}', [suplierController::class, 'edit']);
+    Route::post('/suplier/edit/{id}', [suplierController::class, 'edit_Proses']);
+    
+    Route::get('/suplier/{id}', [suplierController::class, 'del']);
 
 });

@@ -85,27 +85,36 @@
             </div>
             
             <!-- Menu Side Bar -->
-            <a href="{{ url('/dashboard') }}" class="px-4 side nav-item nav-link {{ Request::is('dashboard') ? 'active' : '' }} text-light">
-                <i class="bi bi-house-fill"></i> Dashboard
-            </a>
+                {{-- Menu Dahboard --}}
+                <a href="{{ url('/dashboard') }}" class="px-4 side nav-item nav-link {{ Request::is('dashboard') ? 'active' : '' }} text-light">
+                    <i class="bi bi-house-fill mx-2"></i> Dashboard
+                </a>
 
-            <div class="px-2 pt-3 text-decoration-none text-light"><strong>Data Toko</strong></div>
-                <a href="{{ url('/data-a') }}" class="px-4 side nav-item nav-link {{ Request::is('data-a') ? 'active' : '' }} text-light">
-                    <i class="bi bi-house-fill"></i> Data A
-                </a>
-                <a href="{{ url('/data-b') }}" class="px-4 side nav-item nav-link {{ Request::is('data-b') ? 'active' : '' }} text-light">
-                    <i class="bi bi-house-fill"></i> Data B
-                </a>
-              
-        
-            <div class="px-2 pt-3 text-decoration-none text-light"><strong>Super Admin</strong></div>
-                <a href="{{ url('/pegawai') }}" class="px-4 side nav-item nav-link {{ Request::is('pegawai') ? 'active' : '' }} text-light">
-                    <i class="fa-solid fa-key"></i> Pegawai
-                </a>
+                {{-- Menu Data Suplier --}}
+                <div class="px-3 pt-3 text-decoration-none text-light"><strong>Data Suplier</strong></div>
+                    <a href="{{ url('/suplier') }}" class="px-4 side nav-item nav-link {{ Request::is('suplier') ? 'active' : '' }} text-light">
+                        <i class="bi bi-house-fill mx-2"></i> Suplier
+                    </a>
+
+                {{-- Menu Data Toko --}}
+                <div class="px-3 pt-3 text-decoration-none text-light"><strong>Data Toko</strong></div>
+                    <a href="{{ url('/data-a') }}" class="px-4 side nav-item nav-link {{ Request::is('data-a') ? 'active' : '' }} text-light">
+                        <i class="bi bi-house-fill mx-2"></i> Data A
+                    </a>
+                    <a href="{{ url('/data-b') }}" class="px-4 side nav-item nav-link {{ Request::is('data-b') ? 'active' : '' }} text-light">
+                        <i class="bi bi-house-fill mx-2"></i> Data B
+                    </a>
                 
-            <a href="{{ url('/logout') }}" class="px-4 side nav-item nav-link text-light mt-4">
-                <i class="fa-solid fa-power-off"></i> Logout
-            </a>
+                {{-- Menu Pegawai --}}
+                <div class="px-3 pt-3 text-decoration-none text-light"><strong>Super Admin</strong></div>
+                    <a href="{{ url('/pegawai') }}" class="px-4 side nav-item nav-link {{ Request::is('pegawai') ? 'active' : '' }} text-light">
+                        <i class="fa-solid fa-key mx-2"></i> Pegawai
+                    </a>
+                    
+                {{-- Menu Logout --}}
+                <a href="{{ url('/logout') }}" class="px-4 side nav-item nav-link text-light mt-4">
+                    <i class="fa-solid fa-power-off mx-2"></i> Logout
+                </a>
         </nav>            
     </div>
 

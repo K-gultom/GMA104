@@ -46,4 +46,10 @@ Route::middleware(['auth:','cekLevel:superadmin,admin'])->group(function () {
     
     Route::get('/suplier/{id}', [suplierController::class, 'del']);
 
+
+    /**
+     * Routing Menu Barang dan sub Barang
+     */
+    
+
 });

@@ -85,21 +85,21 @@
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="form-outline">
+                                    <div class="form-outline mb-4">
                                         <label class="form-label" for="status">Status Suplier</label>
                                         <div class="input-group">
-                                          <select value="{{ old('status') ?? '' }}" name="status" class="form-control @error('status') is-invalid @enderror" id="">
-                                            <option value="">Status Suplier Saat Ini?</option>
-                                            <option value="Aktif" {{ old('status') == 'Aktif' ? 'selected' : '' }}>Aktif</option>
-                                            <option value="Tidak Aktif" {{ old('status') == 'Tidak Aktif' ? 'selected' : '' }}>Tidak Aktif</option>
-                                          </select>
-                                          <span class="input-group-text"><i class="bi bi-caret-down-fill"></i></span>
+                                            <select name="status" class="form-control @error('status') is-invalid @enderror" id="status">
+                                                <option value="">Status Suplier Saat Ini?</option>
+                                                <option value="Aktif" {{ old('status') == 'Aktif' ? 'selected' : '' }}>Aktif</option>
+                                                <option value="Tidak Aktif" {{ old('status') == 'Tidak Aktif' ? 'selected' : '' }}>Tidak Aktif</option>
+                                            </select>
+                                            <span class="input-group-text"><i class="bi bi-caret-down-fill"></i></span>
+                                            @error('status')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
-                                        @error('status')
-                                          <div class="invalid-feedback">
-                                            {{$message}}
-                                          </div>
-                                        @enderror
                                     </div>
                                 </div>
                             </div>

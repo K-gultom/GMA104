@@ -26,6 +26,13 @@ class suplierController extends Controller
             'email' => 'required|email',
             'tgl_terdaftar' => 'required|date',
             'status' => 'required',
+        ],[
+            'nama_suplier.required' => 'Form Wajib diIsi!',
+            'alamat.required' => 'Form Wajib diIsi!',
+            'telp.required' => 'Form Wajib diIsi!',
+            'email.required' => 'Form Wajib diIsi!',
+            'tgl_terdaftar.required' => 'Form Wajib diIsi!',
+            'status.required' => 'Form Wajib diIsi!',
         ]);
 
         $save = new suplier();
@@ -56,6 +63,13 @@ class suplierController extends Controller
             'email' => 'required|email',
             'tgl_terdaftar' => 'required|date',
             'status' => 'required',
+        ],[
+            'nama_suplier.required' => 'Form Wajib diIsi!',
+            'alamat.required' => 'Form Wajib diIsi!',
+            'telp.required' => 'Form Wajib diIsi!',
+            'email.required' => 'Form Wajib diIsi!',
+            'tgl_terdaftar.required' => 'Form Wajib diIsi!',
+            'status.required' => 'Form Wajib diIsi!',
         ]);
 
         $save = suplier::find($id);

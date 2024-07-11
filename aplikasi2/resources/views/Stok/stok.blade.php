@@ -63,44 +63,45 @@
                             <thead>
                                 <tr>
                                     <th width="20px">No</th>
-                                    <th class="text-center bg-primary" width="100px">Kode</th>
-                                    <th class="text-center bg-warning">Nama Barang</th>
-                                    <th class="text-center bg-danger">Harga List</th>
-                                    <th class="text-center bg-success">Stok</th>
-                                    <th class="text-center bg-primary">Suplier</th>
-                                    <th class="text-center bg-warning">Cabang</th>
+                                    <th class="text-center bg-" width="100px">Kode</th>
+                                    <th class=" bg-">Nama Barang</th>
+                                    <th class=" bg-">Harga List</th>
+                                    <th class="text-center bg-">Stok</th>
+                                    <th class="text-center bg-">Suplier</th>
+                                    <th class="text-center bg-">Cabang</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($data as $item)
-                                    <tr>
+                                @foreach ($getData as $item)
+                                    <tr style="background-color: #434343">
                                         <td>
-                                            {{ (($data->currentPage() - 1) * $data->perPage()) + $loop->iteration }} 
+                                            {{ (($getData->currentPage() - 1) * $getData->perPage()) + $loop->iteration }} 
                                         </td>
-                                        <td>{{ $item->nama_suplier }} </td>
-                                        <td>{{ $item->email }} </td>
-                                        <td class="text-center">{{ $item->telp }} </td>
-                                        <td class="text-center">{{ $item->telp }} </td>
-                                        <td class="text-center">{{ $item->telp }} </td>
-                                        <td class="text-center">{{ $item->telp }} </td>
-                                        <td>{{ $item->tgl_terdaftar }}</td>
                                         <td class="text-center">
-                                            <a href="{{ url('/suplier/edit') }}/{{ $item->id }}" class="btn btn-warning btn-sm">
+                                            <p class="bg-success rounded-5 text-light">
+                                                {{ $item->kode_barang }} 
+                                            </p>
+                                        </td>
+                                        <td>{{ $item->nama_barang }} </td>
+                                        <td>{{ 'Rp ' . number_format($item->harga, 0, ',', '.') }} </td>
+                                        <td class="text-center">{{ $item->stok }} </td>
+                                        <td class="text-center">{{ $item->getSuplier->nama_suplier }} </td>
+                                        <td class="text-center">{{ $item->cabang }} </td>
+                                        <td class="text-center">
+                                            <a href="{{ url('/stok/edit') }}/{{ $item->id }}" class="btn btn-warning btn-sm">
                                                 <i class="bi bi-pencil"></i> Edit
                                             </a>
-                                            
-                                            <a href="{{ url('/suplier', ['id' => $item->id]) }}" class="btn btn-danger btn-sm" 
+                                            <a href="{{ url('/stok', ['id' => $item->id]) }}" class="btn btn-danger btn-sm" 
                                                 onclick="return confirm('Hapus Data {{ $item->nama_suplier }} ??');">
-                                                 <i class="bi bi-trash"></i> Delete
-                                             </a>
-                                             
+                                                <i class="bi bi-trash"></i> Delete
+                                            </a>
                                         </td>
-                                    </tr>   
-                                @endforeach --}}
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
-                        {{-- {{ $data->links() }} --}}
+                        {{ $getData->links() }}
 
                     </div>
                 </div>

@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\authController;
+use App\Http\Controllers\barangMasukController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\pegawaiController;
+use App\Http\Controllers\pelangganController;
 use App\Http\Controllers\stokController;
 use App\Http\Controllers\suplierController;
+use Illuminate\Routing\Events\Routing;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:','ceklevel:superadmin,admin'])->group(function () {});
@@ -37,24 +40,6 @@ Route::middleware(['auth:','cekLevel:superadmin,admin'])->group(function () {
         Route::post('/pegawai/edit/{id}', [pegawaiController::class, 'edit_pegawai']);
 
     
-
-//=========================================================================================================================
-    /**
-     * Ini Baris Data Routing Suplier
-     * 
-     */
-        Route::get('/suplier', [suplierController::class, 'index']);
-
-        Route::get('/suplier/add', [suplierController::class, 'add']);
-        Route::post('/suplier/add', [suplierController::class, 'add_Proses']);
-
-        Route::get('/suplier/edit/{id}', [suplierController::class, 'edit']);
-        Route::post('/suplier/edit/{id}', [suplierController::class, 'edit_Proses']);
-        
-        Route::get('/suplier/{id}', [suplierController::class, 'del']);
-
-
-
 //=========================================================================================================================
     /**
      * Routing Menu Stok
@@ -75,7 +60,15 @@ Route::middleware(['auth:','cekLevel:superadmin,admin'])->group(function () {
     /**
      * Routing untuk Barang masuk
      */
-
+        Route::get('/barang-masuk', [barangMasukController::class, 'index']);
+        
+        Route::get('/barang-masuk/add', [barangMasukController::class, 'add']);
+        Route::post('/barang-masuk/add', [barangMasukController::class, 'add_Proses']);
+        
+        Route::get('/barang-masuk/edit/{id}', [barangMasukController::class, 'edit']);
+        Route::post('/barang-masuk/edit/{id}', [barangMasukController::class, 'edit_Proses']);
+        
+        Route::get('/barang-masuk/{id}', [barangMasukController::class, 'delete']);
      
 //=========================================================================================================================
     /**
@@ -88,7 +81,15 @@ Route::middleware(['auth:','cekLevel:superadmin,admin'])->group(function () {
     /**
      * Routing Pelanggan
      */
+        Route::get('/pelanggan', [pelangganController::class, 'index']);
 
+        Route::get('/pelanggan/add', [pelangganController::class, 'add']);
+        Route::post('/pelanggan/add', [pelangganController::class, 'add_Proses']);
+
+        Route::get('/pelanggan/edit/{id}', [pelangganController::class, 'edit']);
+        Route::post('/pelanggan/edit/{id}', [pelangganController::class, 'edit_Proses']);
+        
+        Route::get('/pelanggan/{id}', [pelangganController::class, 'delete']);
 
 
 //=========================================================================================================================
@@ -96,6 +97,15 @@ Route::middleware(['auth:','cekLevel:superadmin,admin'])->group(function () {
      * Routing Supplier
      */
 
+        Route::get('/suplier', [suplierController::class, 'index']);
+
+        Route::get('/suplier/add', [suplierController::class, 'add']);
+        Route::post('/suplier/add', [suplierController::class, 'add_Proses']);
+
+        Route::get('/suplier/edit/{id}', [suplierController::class, 'edit']);
+        Route::post('/suplier/edit/{id}', [suplierController::class, 'edit_Proses']);
+
+        Route::get('/suplier/{id}', [suplierController::class, 'del']);
 
 
 //=========================================================================================================================

@@ -79,13 +79,13 @@ Route::middleware(['auth:','cekLevel:superadmin,admin'])->group(function () {
      */
         Route::get('/pelanggan', [pelangganController::class, 'index']);
 
-        Route::get('/pelanggan/add', [pelangganController::class, 'add']);
-        Route::post('/pelanggan/add', [pelangganController::class, 'add_Proses']);
+        Route::get('/pelanggan/add', [pelangganController::class, 'create']);
+        Route::post('/pelanggan/add', [pelangganController::class, 'store']);
 
         Route::get('/pelanggan/edit/{id}', [pelangganController::class, 'edit']);
-        Route::post('/pelanggan/edit/{id}', [pelangganController::class, 'edit_Proses']);
+        Route::post('/pelanggan/edit/{id}', [pelangganController::class, 'update']);
         
-        Route::get('/pelanggan/{id}', [pelangganController::class, 'delete']);
+        Route::get('/pelanggan/{id}', [pelangganController::class, 'destroy']);
 
 
 //=========================================================================================================================

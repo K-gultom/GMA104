@@ -61,14 +61,10 @@ Route::middleware(['auth:','cekLevel:superadmin,admin'])->group(function () {
      * Routing untuk Barang masuk
      */
         Route::get('/barang-masuk', [barangMasukController::class, 'index']);
+
+        Route::get('/barang-masuk/add', [barangMasukController::class, 'create']);
+        Route::post('/barang-masuk/add', [barangMasukController::class, 'store'])->name('saveData');
         
-        Route::get('/barang-masuk/add', [barangMasukController::class, 'add']);
-        Route::post('/barang-masuk/add', [barangMasukController::class, 'add_Proses']);
-        
-        Route::get('/barang-masuk/edit/{id}', [barangMasukController::class, 'edit']);
-        Route::post('/barang-masuk/edit/{id}', [barangMasukController::class, 'edit_Proses']);
-        
-        Route::get('/barang-masuk/{id}', [barangMasukController::class, 'delete']);
      
 //=========================================================================================================================
     /**

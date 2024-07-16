@@ -1,15 +1,15 @@
 @extends('main')
 
 @section('title')
-    Stok
+    Data Pelanggan
 @endsection
 
 @section('content')
     <div class="container-fluid">    
-        <h3 class="mb-3 mt-2">Data Stok</h3>
+        <h3 class="mb-3 mt-2">Data Pelanggan</h3>
         <nav aria-label="breadcrumb" class="mb-1">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Data Stok</li>
+                <li class="breadcrumb-item active" aria-current="page">Data Pelanggan</li>
             </ol>
         </nav>
 
@@ -19,22 +19,19 @@
                     <div class="card-header">
                         <div class="d-flex">
                             <div class="w-100 pt-1">
-                                <strong>Data Stok</strong>
+                                <strong>Data Pelanggan</strong>
                             </div>
                             <div class="w-100 text-end">
-                                <a href="{{url('/stok')}}" class="btn btn-outline-primary btn-sm">
+                                <a href="{{url('/pelanggan')}}" class="btn btn-outline-primary btn-sm">
                                     Refresh Data <i class="bi bi-arrow-clockwise"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-
-                    
                     <div class="card-body">
-                        
                         @if (Session::has('message'))
                             <div class="alert alert-success" id="flash-message">
-                               <strong> {{Session::get('message')}} </strong>
+                                {{Session::get('message')}}
                             </div>
                             <script>
                                 setTimeout(function (){
@@ -45,14 +42,14 @@
 
                         <div class="row mx-3 my-4">
                             <div class="col-6 bg-">
-                                <a href="{{ url('/stok/add') }}" class="btn btn-primary btn-sm">
-                                    Stok Baru <i class="fa-solid fa-plus"></i>
+                                <a href="{{ url('/pegawai/add') }}" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addPegawai">
+                                    Pegawai Baru <i class="fa-solid fa-plus"></i>
                                 </a>
                             </div>
                             <div class="col-6">
                                 <form action="">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="search" placeholder="Cari Nama Barang ...">
+                                        <input type="text" class="form-control" name="search" placeholder="Cari Nama pegawai ...">
                                         <button class="btn btn-primary" type="submit">
                                             <i class="bi bi-search"></i> Search
                                         </button>
@@ -64,51 +61,44 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th width="20px">No</th>
-                                    <th class="text-center bg-" width="100px">Kode</th>
-                                    <th class=" bg-">Nama Barang</th>
-                                    <th class=" bg-">Harga List</th>
-                                    <th class="text-center bg-">Stok</th>
-                                    <th class="text-center bg-">Suplier</th>
-                                    <th class="text-center bg-">Cabang</th>
+                                    <th width="70px"></th>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Email</th>
+                                    <th class="text-center">Level</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($getData as $item)
-                                    <tr style="background-color: #434343">
+                                {{-- @foreach ($data as $item)
+                                    <tr>
+                                        <td></td>
                                         <td>
-                                            {{ (($getData->currentPage() - 1) * $getData->perPage()) + $loop->iteration }} 
+                                            {{ (($data->currentPage() - 1) * $data->perPage()) + $loop->iteration }} 
                                         </td>
+                                        <td>{{ $item->name }} </td>
+                                        <td>{{ $item->email }} </td>
+                                        <td class="text-center">{{ $item->level }} </td>
                                         <td class="text-center">
-                                            <p class="bg-success rounded-5 text-light">
-                                                {{ $item->kode_barang }} 
-                                            </p>
-                                        </td>
-                                        <td>{{ $item->nama_barang }} </td>
-                                        <td>{{ 'Rp ' . number_format($item->harga, 0, ',', '.') }} </td>
-                                        <td class="text-center">{{ $item->stok }} </td>
-                                        <td class="text-center">{{ $item->getSuplier->nama_suplier }} </td>
-                                        <td class="text-center">{{ $item->cabang }} </td>
-                                        <td class="text-center">
-                                            <a href="{{ url('/stok/edit') }}/{{ $item->id }}" class="btn btn-warning btn-sm">
+                                            <a href="{{ url('/pegawai/edit') }}/{{ $item->id }}" class="btn btn-warning btn-sm">
                                                 <i class="bi bi-pencil"></i> Edit
                                             </a>
-                                            <a href="{{ url('/stok', ['id' => $item->id]) }}" class="btn btn-danger btn-sm" 
-                                                onclick="return confirm('Hapus Data {{ $item->nama_suplier }} ??');">
+                                            
+                                            <a href="{{ url('/pegawai/delete', ['id' => $item->id]) }}" class="btn btn-danger btn-sm" 
+                                               onclick="return confirm('Hapus Data ???');">
                                                 <i class="bi bi-trash"></i> Delete
                                             </a>
                                         </td>
-                                    </tr>
-                                @endforeach
+                                    </tr>   
+                                @endforeach --}}
                             </tbody>
                         </table>
-                        {{ $getData->links() }}
+                        {{-- {{ $data->links() }} --}}
 
                     </div>
                 </div>
             </div>
         </div>
-    </div> 
+    </div>    
 
 @endsection

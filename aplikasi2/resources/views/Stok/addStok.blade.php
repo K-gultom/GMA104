@@ -18,7 +18,7 @@ Stok
                 <div class="card">
                     <div class="card-header">
                         <strong>Form</strong> Tambah Stok
-                    </div>
+                    </div> 
                     <form action="" method="post">
                         @csrf
                         <div class="card-body">

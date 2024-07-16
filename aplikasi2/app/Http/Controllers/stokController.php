@@ -14,7 +14,7 @@ class stokController extends Controller
         $getData = stok::with('getSuplier')
         ->where('kode_barang', 'like', "%{$search}%") //fitur search
         ->orWhere('nama_barang', 'like', "%{$search}%") //fitur search
-        ->paginate(50);
+        ->paginate(25);
 
         return view('Stok.stok', compact('getData'));
     }

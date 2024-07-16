@@ -1,15 +1,15 @@
 @extends('main')
 
 @section('title')
-    Data Pegawai
+    Data Pelanggan
 @endsection
 
 @section('content')
     <div class="container-fluid">    
-        <h3 class="mb-3 mt-2">Data Pegawai</h3>
+        <h3 class="mb-3 mt-2">Data Pelanggan</h3>
         <nav aria-label="breadcrumb" class="mb-1">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Data Pegawai</li>
+                <li class="breadcrumb-item active" aria-current="page">Data Pelanggan</li>
             </ol>
         </nav>
 
@@ -19,10 +19,10 @@
                     <div class="card-header">
                         <div class="d-flex">
                             <div class="w-100 pt-1">
-                                <strong>Data Pegawai</strong>
+                                <strong>Data Pelanggan</strong>
                             </div>
                             <div class="w-100 text-end">
-                                <a href="{{url('/pegawai')}}" class="btn btn-outline-primary btn-sm">
+                                <a href="{{url('/pelanggan')}}" class="btn btn-outline-primary btn-sm">
                                     Refresh Data <i class="bi bi-arrow-clockwise"></i>
                                 </a>
                             </div>
@@ -70,7 +70,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $item)
+                                {{-- @foreach ($data as $item)
                                     <tr>
                                         <td></td>
                                         <td>
@@ -90,10 +90,10 @@
                                             </a>
                                         </td>
                                     </tr>   
-                                @endforeach
+                                @endforeach --}}
                             </tbody>
                         </table>
-                        {{ $data->links() }}
+                        {{-- {{ $data->links() }} --}}
 
                     </div>
                 </div>
@@ -101,73 +101,4 @@
         </div>
     </div>    
 
-    <!-- Modal Add New Data-->
-    <div class="modal fade" id="addPegawai" tabindex="-1" aria-labelledby="addPegawai" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="addPegawai">Data Pegawai Baru</h1>
-                    <a href="{{ url('/pegawai') }}" type="button" class="btn-close"></a>
-                </div>
-                <form action="{{ route('add-pegawai') }}" method="post">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-outline mb-4">
-                                    <label class="form-label" for="name">Nama Lengkap</label>
-                                    <input type="text" value="{{ old('name') }}" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Nama Lengkap..."/>
-                                    @error('name')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-outline mb-4">
-                                    <label class="form-label" for="email">Email</label>
-                                    <input type="email" value="{{ old('email') }}" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email Anda"/>
-                                    @error('email')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-outline mb-4">
-                                    <label class="form-label" for="password">Password</label>
-                                    <input type="text" value="{{ old('password') }}" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password Anda..."/>
-                                    @error('password')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <input type="hidden" name="level" value="admin">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="{{ url('/pegawai') }}" type="button" class="btn btn-secondary">Close</a>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
- 
-
-    <!-- JavaScript Functions -->
-    <script>
-        @if ($errors->any())
-            document.addEventListener('DOMContentLoaded', function () {
-                var myModal = new bootstrap.Modal(document.getElementById('addPegawai'));
-                myModal.show();
-            });
-        @endif
-        
-    </script>
 @endsection

@@ -25,10 +25,10 @@ class barangMasukController extends Controller
         }
 
         // Order the results by tanggal_faktur in ascending order
-        $query->orderBy('tanggal_faktur', 'asc');
+        $query->orderBy('created_at', 'desc');
 
         // Paginate the results, e.g., 10 items per page
-        $getData = $query->paginate(10);
+        $getData = $query->paginate(5);
 
         // Return the view with the paginated data
         return view('Barang.BarangMasuk.barangMasuk', compact('getData'));
@@ -91,7 +91,7 @@ class barangMasukController extends Controller
 
         $UpdateStok->save();
 
-        return redirect('/barang-masuk')->with('message', 'Data Barang Masuk Berhasil Ditambahkan');
+        return redirect('/barang-masuk')->with('message', 'Data Barang Berhasil Ditambahkan');
 
     }
 
@@ -137,6 +137,23 @@ class barangMasukController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $barangMasuk = barangMasuk::find($id);
+            $get_Id_Stok = $barangMasuk->nama_barang_id;
+            $get_Jumlah_Barang_Masuk = $barangMasuk->jumlah_barang_masuk;
+            // dd($get_Jumlah_Barang_Masuk);
+            // dd($nama_barang_id);
+
+            $getItemBarang = stok::find($get_Id_Stok);
+                $getStok = $getItemBarang -> stok;
+                // dd($getStok);
+                $update_Stok_Terbaru = $getStok - $get_Jumlah_Barang_Masuk;
+                $getItemBarang -> stok = $update_Stok_Terbaru;
+            $getItemBarang -> save();
+        
+            $barangMasuk->delete();
+
+            
+
+        return redirect()->back()->with('message', 'Data Barang Berhasil Dihapus');
     }
 }

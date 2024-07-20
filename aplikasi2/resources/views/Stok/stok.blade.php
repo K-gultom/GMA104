@@ -64,12 +64,12 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th width="20px">No</th>
+                                    <th class="text-center" width="20px">No</th>
                                     <th class="text-center bg-" width="100px">Kode</th>
-                                    <th class=" bg-">Nama Barang</th>
+                                    <th class="text-center">Nama Barang</th>
                                     <th class=" bg-">Harga List</th>
                                     <th class="text-center bg-">Stok</th>
-                                    <th class="text-center bg-">Suplier</th>
+                                    <th class=" bg-">Suplier</th>
                                     <th class="text-center bg-">Cabang</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
@@ -77,7 +77,7 @@
                             <tbody>
                                 @foreach ($getData as $item)
                                     <tr style="background-color: #434343">
-                                        <td>
+                                        <td class="text-center">
                                             {{ (($getData->currentPage() - 1) * $getData->perPage()) + $loop->iteration }} 
                                         </td>
                                         <td class="text-center">
@@ -85,10 +85,10 @@
                                                 {{ $item->kode_barang }} 
                                             </p>
                                         </td>
-                                        <td>{{ $item->nama_barang }} </td>
+                                        <td width="550px">{{ $item->nama_barang }} </td>
                                         <td>{{ 'Rp ' . number_format($item->harga, 0, ',', '.') }} </td>
                                         <td class="text-center">{{ $item->stok }} </td>
-                                        <td class="text-center">{{ $item->getSuplier->nama_suplier }} </td>
+                                        <td>{{ $item->getSuplier->nama_suplier }} </td>
                                         <td class="text-center">{{ $item->cabang }} </td>
                                         <td class="text-center">
                                             <a href="{{ url('/stok/edit') }}/{{ $item->id }}" class="btn btn-warning btn-sm">

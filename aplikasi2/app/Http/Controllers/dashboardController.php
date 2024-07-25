@@ -11,7 +11,7 @@ class dashboardController extends Controller
     }
 
     public function DataA(){
-        return view('Z-testing.data-a');
+        return view('Nota.nota');
     }
 
     public function data_getData(Request $request){

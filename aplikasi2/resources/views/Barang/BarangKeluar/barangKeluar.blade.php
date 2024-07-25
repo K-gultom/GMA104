@@ -66,34 +66,35 @@ Barang Keluar
                                     </div>
                                 </form>
                             </div>
-                            <div class="col-6">
-                                @if (Session::has('message'))
+                            @if (Session::has('message'))
+                                <div class="col-6">
                                     <div class="alert alert-success" id="flash-message">
                                         <strong>
-                                            {{Session::get('message')}}
+                                            {{ Session::get('message') }}
                                         </strong>
                                     </div>
                                     <script>
                                         setTimeout(function () {
-                                            document
-                                                .getElementById('flash-message')
-                                                .style
-                                                .display = 'none';
+                                            document.getElementById('flash-message').style.display = 'none';
+                                            location.reload(); // Refresh halaman setelah timeout habis
                                         }, {{ session('timeout', 5000) }});
                                     </script>
-                                @else
-                                    <div class="row">
-                                        <div class="col-4 bg-danger">
-                                            <h5>Total Pendapatan</h5>
-                                        </div>
-                                        <div class="col bg-success">
-                                            <strong>
-                                                Rp. 23.000.000
-                                            </strong>
+                                </div>
+                            @else
+                                <div class="col-6">
+                                    <div class="row d-flex">
+                                        <div class="col-6 w-100 text-end">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h3>Total Pendapatan</h3>
+                                                    <h4>{{ 'Rp ' . number_format($getTotalPendapatan, 0, ',', '.') }}</h4>
+                                                </div>
+                                            </div>
+                                            {{-- <h5>Total Pendapatan</h5> --}}
                                         </div>
                                     </div>
-                                @endif
-                            </div>
+                                </div>
+                            @endif
                         </div>
                         <div class="row">
                             <div class="col mt-4">
@@ -110,8 +111,8 @@ Barang Keluar
                         <thead>
                             <th class="text-center">No</th>
                             <th class="text-center">Tanggal Faktur</th>
-                            <th class="text-center">Nama Barang</th>
-                            <th class="">Harga</th>
+                            <th width="300px">Nama Barang</th>
+                            <th class="">Harga Jual</th>
                             <th class="text-center">Jumlah</th>
                             <th class="text-center">Sub Total</th>
                             <th class="text-center">Admin</th>
@@ -120,46 +121,27 @@ Barang Keluar
                             <th class="text-center">Aksi</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-center">1</td>
-                                <td class="text-center">12/01/2001</td>
-                                <td class="text-center">XXXX XXXXX XXXXXXX/XX</td>
-                                <td class="">Rp. Xx.xxx.xxx</td>
-                                <td class="text-center">XXX</td>
-                                <td class="text-center">Rp XXX.xxx.xxx</td>
-                                <td class="text-center">SuperAdmin</td>
-                                <td class="text-center">01/01/1111</td>
-                                <td class="text-center">Xxxxxxxxx</td>
-                                <td class="text-center">EDIT</td>
-                                
-                            </tr>
-                            {{-- @foreach($getData as $item)
-                            <tr>
-                                <td class="text-center">
-                                    {{ (($getData->currentPage() - 1) * $getData->perPage()) + $loop->iteration }}
-                                </td>
-                                <td class="text-center" width="128px">{{ Carbon\Carbon::parse( $item->tanggal_faktur )->format('d/m/Y') }}</td>
-                                <td width="450px">{{ $item->getStok->nama_barang }}</td>
-                                <td width="300px">{{ $item->getSuplier->nama_suplier }}</td>
-                                <td>{{ 'Rp ' . number_format($item->harga_beli, 0, ',', '.') }}</td>
-                                <td class="text-center">{{ $item->jumlah_barang_masuk }}</td>
-                                <td class="text-center">{{ $item->getAdmin->name }}</td>
-                                <td class="text-center">{{ $item->cabang }}</td>
-                                <td class="text-center">
-                                    <a
-                                        href="{{ url('/barang-masuk', ['id' => $item->id]) }}"
-                                        class="btn btn-danger btn-sm"
-                                        onclick="return confirm('Menghapus data dapat menyebabkan beberapa kekeliruan dalam data stok!!!, Yakin hapus data??');">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach --}}
-                            
-                            
+                            @foreach ($getBarangKeluar as $item)
+                                <tr>
+                                    <td class="text-center">
+                                        {{ (($getBarangKeluar->currentPage() - 1) * $getBarangKeluar->perPage()) + $loop->iteration }}
+                                    </td>
+                                    <td class="text-center" width="128px">{{ Carbon\Carbon::parse( $item->tgl_faktur )->format('d/m/Y') }}</td>
+                                    <td>{{ $item->getStok->nama_barang }}</td>
+                                    <td>{{ 'Rp ' . number_format($item->harga_jual, 0, ',', '.') }}</td>
+                                    <td class="text-center">{{ $item->jumlah_beli }}</td>
+                                    <td>{{ 'Rp ' . number_format($item->sub_total, 0, ',', '.') }}</td>
+                                    <td class="text-center">{{ $item->getUser->name }}</td>
+                                    <td class="text-center" width="128px">{{ Carbon\Carbon::parse( $item->tgl_buat )->format('d/m/Y') }}</td>
+                                    <td class="text-center">{{ $item->cabang }}</td>
+                                    <td class="text-center">
+                                        hapus
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
-                        {{-- {{ $getData->links() }} --}}
                     </table>
+                    {{ $getBarangKeluar->links() }}
 
                 </div>
             </div>

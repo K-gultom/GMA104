@@ -8,7 +8,7 @@
     <style>
         @page {
             size: landscape;
-            margin: 20mm;
+            /* margin: 20mm;  */
         }
         
         body {
@@ -21,9 +21,9 @@
             border: none;
         }
 
-        td {
+        .td-produk {
             padding: 8px;
-            /* border: 1px solid #000; */
+            border: 1px solid #000;
         }
     </style>
 </head>
@@ -37,32 +37,38 @@
             </td>
             <td style="text-align: center"><h3>PT. Smart Campus</h3></td>
             <td>
-                Tanggal: 12/12/2022 <br>
-                Konsumen: SUpirjo
+                Tanggal: <span id="currentDate"></span><br>
+                Konsumen: {{ $dataPrint->getPelanggan->nama_pelanggan}}
             </td>
         </tr>
     </table>
-    <p>Nomor Faktur: </p>
+    <p>Nomor Faktur: {{ $dataPrint->kode_transaksi}}</p>
     <table>
         <tr>
-            <td><strong>Nama Barang</strong></td>
-            <td><strong>Harga</strong></td>
-            <td><strong>Jumlah Barang</strong></td>
-            <td><strong>Diskon</strong></td>
-            <td><strong>Sub Total</strong></td>
+            <td class="td-produk"><strong>Nama Barang</strong></td>
+            <td class="td-produk"><strong>Harga (Rp)</strong></td>
+            <td class="td-produk"><strong>Jumlah Barang</strong></td>
+            <td class="td-produk"><strong>Diskon</strong></td>
+            <td class="td-produk"><strong>Sub Total (Rp)</strong></td>
         </tr>
         <tr>
-            <td>XXXXXX</td>
-            <td>XXXXXX</td>
-            <td>XXXXXX</td>
-            <td>XXXXXX</td>
-            <td>XXXXXX</td>
+            <td class="td-produk">{{ $dataPrint->getStok->nama_barang }}</td>
+            <td class="td-produk">{{number_format($dataPrint->harga_jual, 0, ',', '.') }}</td>
+            <td class="td-produk">{{ $dataPrint->jumlah_beli }}</td>
+            <td class="td-produk">
+                @if (is_null($dataPrint->diskon))
+                    0
+                @else
+                {{ $dataPrint->diskon }}
+                @endif
+            </td>
+            <td class="td-produk">{{ number_format($dataPrint->sub_total, 0, ',', '.') }}</td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td colspan="2">Total Barang: 3 PCS</td>
-            <td>Total Harga: Rp 1.230.000</td>
+            <td class="td-produk">&nbsp;</td>
+            <td class="td-produk" colspan="2">Total Barang: {{ $dataPrint->jumlah_beli }}</td>
+            <td class="td-produk" colspan="3">Total Harga: {{ 'Rp ' . number_format($dataPrint->sub_total, 0, ',', '.') }}</td>
+
         </tr>
     </table>
 <br>
@@ -75,11 +81,27 @@
             <td>&nbsp;</td>
             <td>&nbsp;</td>
         </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
         <tr style="text-align: center">
-            <td><h3>_____________</h3></td>
-            <td><h3>_____________</h3></td>
+            <td><h3>_______________</h3></td>
+            <td><h3>PT. Smart Campus</h3></td>
         </tr>
     </table>
 
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentDateElement = document.getElementById('currentDate');
+        const now = new Date();
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const year = now.getFullYear();
+        const formattedDate = `${day}/${month}/${year}`;
+        currentDateElement.textContent = formattedDate;
+    });
+</script>
+
 </html>

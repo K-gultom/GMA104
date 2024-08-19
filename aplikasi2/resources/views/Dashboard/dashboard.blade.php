@@ -13,28 +13,65 @@
             </ol>
         </nav>
 
-        <div class="row User">
-            @for ($i = 0; $i < 12; $i++)
-                <div class="col-lg-3 col-md-3 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            @if ($i % 2 == 0)
-                                <h6 class="rounded-3 p-2 text-light" style="background-color: #ACAA17">Data Admin</h6>
-                            @else
-                                <h6 class="rounded-3 p-2 text-light" style="background-color: #48DAE8">Data Admin</h6>
-                            @endif
-                            <div class="d-flex align-items-center justify-content-between">
-                                <i class="bi bi-people-fill custom-icon-size"></i>
-                                <h3 class="mx-2">22</h3>
-                            </div>
-                            <div class="text-end mt-2">
-                                <a href="{{ url('/pegawai') }}" class="btn btn_info">Lihat Data <i class="bi bi-eye"></i></a>
-                            </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 mb-4">
+                <div class="card" style="background-color: #003788">
+                    <div class="card-body">
+                        <h6 class="rounded p-2 text-dark" style="background-color: #ffff">Data Suplier</h6>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <i class="bi bi-person-lines-fill custom-icon-size text-light"></i>
+                            <h3 class="mx-2 text-light">{{ $getSuplier }}</h3>
+                        </div>
+                        <div class="text-end mt-2">
+                            <a href="{{ url('/suplier') }}" class="btn btn_info">Lihat Data <i class="bi bi-eye"></i></a>
                         </div>
                     </div>
                 </div>
-            @endfor
+            </div>
+            <div class="col-lg-3 col-md-3 mb-4">
+                <div class="card" style="background-color: #003788">
+                    <div class="card-body">
+                        <h6 class="rounded p-2 text-dark" style="background-color: #ffff">Total Pelanggan</h6>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <i class="bi bi-people custom-icon-size text-light"></i>
+                            <h3 class="mx-2 text-light">{{ $totalPelanggan }}</h3>
+                        </div>
+                        <div class="text-end mt-2">
+                            <a href="{{ url('/pelanggan') }}" class="btn btn_info">Lihat Data <i class="bi bi-eye"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 mb-4">
+                <div class="card" style="background-color: #003788">
+                    <div class="card-body">
+                        <h6 class="rounded p-2 text-dark" style="background-color: #ffff">Data Stok</h6>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <i class="bi bi-bag-check custom-icon-size text-light"></i>
+                            <h3 class="mx-2 text-light">{{ $getStok }}</h3>
+                        </div>
+                        <div class="text-end mt-2">
+                            <a href="{{ url('/stok') }}" class="btn btn_info">Lihat Data <i class="bi bi-eye"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 mb-4">
+                <div class="card" style="background-color: #003788">
+                    <div class="card-body">
+                        <h6 class="rounded p-2 text-dark" style="background-color: #ffff">Total Pendapatan</h6>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <i class="bi bi-people-fill custom-icon-size text-light"></i>
+                            <h3 class="mx-2 text-light">{{ 'Rp ' . number_format($totalPendapatam, 0, ',', '.') }}</h3>
+                        </div>
+                        <div class="text-end mt-2">
+                            <a href="{{ url('/barang-keluar') }}" class="btn btn_info">Lihat Data <i class="bi bi-eye"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
 
     <style>
@@ -70,7 +107,7 @@
             transition: background-color 0.3s ease;
         }
         .btn_info:hover {
-            background-color: #DC6B19;
+            background-color: #FFFFFF;
             color: #000000;
         }
         .custom-icon-size {

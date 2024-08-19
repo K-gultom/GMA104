@@ -1,7 +1,7 @@
 @extends('main')
 
 @section('title')
-Barang Keluar
+    Barang Keluar
 @endsection
 
 @section('content') 
@@ -135,7 +135,17 @@ Barang Keluar
                                     <td class="text-center" width="128px">{{ Carbon\Carbon::parse( $item->tgl_buat )->format('d/m/Y') }}</td>
                                     <td class="text-center">{{ $item->cabang }}</td>
                                     <td class="text-center">
-                                        hapus
+                                        {{-- <a href="{{ url('/barang-keluar/print') }}/{{ $item->id }}" class="btn btn-success btn-sm" title="Cetak Nota" target="_blank">
+                                            <i class="bi bi-printer"></i>
+                                        </a> --}}
+
+                                        <a href="#" class="btn btn-success btn-sm print-nota" data-url="{{ url('/barang-keluar/print') }}/{{ $item->id }}" title="Cetak Nota">
+                                            <i class="bi bi-printer"></i>
+                                        </a>
+
+                                        <a href="{{ url('/barang-keluar') }}/{{ $item->id }}" class="btn btn-danger btn-sm" title="hapus" onclick="return confirm('Yakin Hapus Data ???');">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -148,4 +158,20 @@ Barang Keluar
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const printButtons = document.querySelectorAll('.print-nota');
+
+        printButtons.forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                const url = this.getAttribute('data-url');
+                const printWindow = window.open(url, '_blank');
+                printWindow.addEventListener('load', function () {
+                    printWindow.print();
+                });
+            });
+        });
+    });
+</script>
 @endsection

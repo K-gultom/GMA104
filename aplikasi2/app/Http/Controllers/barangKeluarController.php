@@ -30,7 +30,7 @@ class barangKeluarController extends Controller
          $query->orderBy('created_at', 'desc');
  
          // Paginate the results, e.g., 10 items per page
-         $getBarangKeluar = $query->paginate(5);
+         $getBarangKeluar = $query->paginate(15);
          
         $getTotalPendapatan = barangKeluar::sum('sub_total');
 
@@ -216,6 +216,32 @@ class barangKeluarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = barangKeluar::find($id);
+        $getIdBK = $delete->barang_id;
+        $getJumlahBK = $delete->jumlah_beli;
+            
+            $update = stok::find($getIdBK);
+            $getStok = $update->stok;
+
+            $jumlahBaru = $getStok + $getJumlahBK;
+
+            $update->stok = $jumlahBaru;
+
+            // dd($update);
+            $update->save();
+
+        $delete->delete();
+
+        return redirect('/barang-keluar')->with('message', 'Data Berhasil diHapus!!!');
     }
+
+    public function print($id){
+
+        $dataPrint = barangKeluar::with('getStok', 'getPelanggan')->find($id);
+        // dd($dataPrint);
+
+        return view('Nota.nota', compact('dataPrint'));
+    }
+
+
 }

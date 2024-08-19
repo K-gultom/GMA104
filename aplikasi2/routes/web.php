@@ -27,12 +27,10 @@ Route::post('/testGetData', [dashboardController::class, 'testGetData_Process'])
 
 Route::middleware(['auth:','cekLevel:superadmin,admin'])->group(function () {
 
+
     Route::get('/logout', [authController::class, 'logout']);
 
-
     Route::get('/dashboard', [dashboardController::class, 'index']);
-
-
 
 //=========================================================================================================================
     /**
@@ -61,10 +59,7 @@ Route::middleware(['auth:','cekLevel:superadmin,admin'])->group(function () {
         Route::get('/stok/{id}', 'del');
 
     });
-        
-
-
-    
+            
 //=========================================================================================================================
     /**
      * Routing untuk Barang masuk
@@ -88,15 +83,14 @@ Route::middleware(['auth:','cekLevel:superadmin,admin'])->group(function () {
         Route::get('/barang-keluar', 'index');
             
         Route::get('/barang-keluar/add','create');
-        Route::post('/barang-keluar/add','store');
+        Route::post('/barang-keluar/add','store'); 
 
         Route::post('/barang-keluar/save','saveProcess')->name('addBarangKeluar');
 
-        
+        Route::get('/barang-keluar/print/{id}','print');
+
         Route::get('/barang-keluar/{id}','destroy');
      });
-
-
      
 //=========================================================================================================================
     /**
@@ -113,7 +107,6 @@ Route::middleware(['auth:','cekLevel:superadmin,admin'])->group(function () {
 
      });
         
-
 //=========================================================================================================================
     /**
      * Routing Supplier
@@ -132,7 +125,6 @@ Route::middleware(['auth:','cekLevel:superadmin,admin'])->group(function () {
     /**
      * Routing Nota Penjualan
      */
-
 
      
 //=========================================================================================================================

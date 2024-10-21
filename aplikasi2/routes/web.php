@@ -12,17 +12,11 @@ use App\Models\suplier;
 use Illuminate\Routing\Events\Routing;
 use Illuminate\Support\Facades\Route;
 
+
 Route::middleware(['auth:','ceklevel:superadmin,admin'])->group(function () {});
 
 Route::get('/', [authController::class, 'index'])->name('login');
 Route::post('/', [authController::class, 'login_proses']);
-
-// Routing for tes
-Route::get('/data-a', [dashboardController::class, 'DataA']);
-Route::post('/data-a', [dashboardController::class, 'data_getData']);
-
-// Route::get('/testGetData', [dashboardController::class, 'testGetData']);
-Route::post('/testGetData', [dashboardController::class, 'testGetData_Process'])->name('saveForm');
 
 
 Route::middleware(['auth:','cekLevel:superadmin,admin'])->group(function () {
@@ -123,14 +117,19 @@ Route::middleware(['auth:','cekLevel:superadmin,admin'])->group(function () {
 
 //=========================================================================================================================
     /**
-     * Routing Nota Penjualan
-     */
-
-     
-//=========================================================================================================================
-    /**
      * Routing Rekap Pelanggan
      */
 
 
 });
+
+
+
+// Routing for tes
+Route::get('/data-a', [dashboardController::class, 'DataA']);
+Route::post('/data-a', [dashboardController::class, 'data_getData']);
+
+// Route::get('/testGetData', [dashboardController::class, 'testGetData']);
+Route::post('/testGetData', [dashboardController::class, 'testGetData_Process'])->name('saveForm');
+
+

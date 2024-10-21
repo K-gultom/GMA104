@@ -8,14 +8,13 @@ use Illuminate\Support\Facades\Hash;
 
 class pegawaiController extends Controller
 {
-    public function index(){
 
+    public function index(){
         $data = User::paginate();
         return view('Pegawai.pegawai', compact('data'));
     }
 
     public function add_pegawai(Request $req){
-
         $req->validate([
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users,email',

@@ -109,7 +109,7 @@
                     <h1 class="modal-title fs-5" id="addPegawai">Data Pegawai Baru</h1>
                     <a href="{{ url('/pegawai') }}" type="button" class="btn-close"></a>
                 </div>
-                <form action="{{ route('add-pegawai') }}" method="post">
+                <form action="" method="post">
                     @csrf
                     <div class="modal-body">
                         <div class="row">

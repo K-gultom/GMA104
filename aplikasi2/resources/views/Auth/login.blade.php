@@ -32,7 +32,7 @@
               <div class="brand-logo">
                 {{-- <img src="template/images/logo.svg" alt="logo"> --}}
                 <h3>
-                    GMA104A Login
+                    PCT App Login
                 </h3> 
               </div>
               <h4>Hello! let's get started</h4>

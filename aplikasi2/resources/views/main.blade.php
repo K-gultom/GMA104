@@ -79,7 +79,7 @@
             <div class="container mt-3" style="padding-right: 50px">
                 <a class="head navbar-brand mt-3" href="#">
                     <img src="{{ url('/assets/images/laravel.png') }}" height="60">
-                    GMA104A
+                    Palcomtech App
                 </a>
                 <h3 class="head m-3"></h3>
             </div>
@@ -119,14 +119,6 @@
                 </a>
 
 
-                <div class="px-3 pt-3 text-decoration-none text-light"><strong>Menu Tambahan</strong></div>
-                    <a href="{{ url('/nota-jual') }}" class="px-4 side nav-item nav-link {{ Request::is('nota-jual') ? 'active' : '' }} text-light">
-                        <i class="bi bi-file-earmark-text mx-2"></i> Nota Penjualan
-                    </a>
-                    <a href="{{ url('/rekap-pelanggan') }}" class="px-4 side nav-item nav-link {{ Request::is('rekap-pelanggan') ? 'active' : '' }} text-light">
-                        <i class="bi bi-file-earmark-text mx-2"></i> Rekap Pelanggan
-                    </a>
-
                 {{-- Menu Logout --}}
                 <a href="{{ url('/logout') }}" class="px-1 side nav-item nav-link text-light mt-4">
                     <i class="fa-solid fa-power-off mx-2"></i> Logout
@@ -141,12 +133,9 @@
                     <button id="toggleMenuBtn" class="btn btn-light me-2"><i class="fas fa-bars"></i></button>
 
                     <a class="navbar-brand" href="">
-                        Hai {{Auth()->User()->email}}
+                        {{-- Hai {{Auth()->User()->email}} --}}
                     </a>  
                 </div>
-                {{-- <a href="{{url('/')}}" class="text-light" style="text-decoration: none;">
-                    Logout  <i class="fa-solid fa-power-off"></i>
-                </a> --}}
             </div>
             
         </nav>
@@ -156,7 +145,7 @@
         </div> 
 
         <footer class="text-center p-3">
-            &copy; 2024 GMA104A - Apps Stok Barang All rights reserved.
+            &copy; 2024 PCT APPS - Apps Stok Barang All rights reserved.
         </footer>
     </div>
 </div>

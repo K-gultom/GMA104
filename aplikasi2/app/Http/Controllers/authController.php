@@ -12,7 +12,7 @@ class authController extends Controller
     public function index(){
         return view('Auth.login');
     }
-
+ 
     public function login_proses(Request $request)
     {
         $request->validate([
